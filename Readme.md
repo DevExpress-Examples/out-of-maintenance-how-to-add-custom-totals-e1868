@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Default.aspx](./CS/ASPxPivotGrid_CustomTotals/Default.aspx) (VB: [Default.aspx.vb](./VB/ASPxPivotGrid_CustomTotals/Default.aspx.vb))
+* [Default.aspx.cs](./CS/ASPxPivotGrid_CustomTotals/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxPivotGrid_CustomTotals/Default.aspx.vb))
+<!-- default file list end -->
 # How to Add Custom Totals
 
 
