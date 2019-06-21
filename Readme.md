@@ -5,6 +5,9 @@
 * [Default.aspx.cs](./CS/ASPxPivotGrid_CustomTotals/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxPivotGrid_CustomTotals/Default.aspx.vb))
 <!-- default file list end -->
 # How to Add Custom Totals
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/e1868/)**
+<!-- run online end -->
 
 
 <p>This example shows how to display custom totals in the 'Country' column field. Four custom totals calculate the Average, Sum, Min and Max values against the data field.</p>
