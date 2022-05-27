@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs"
         Inherits="CustomTotals._Default" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v13.1, Version=13.1.14.0,
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v21.2, Version=21.2.7.0,
         Culture=neutral, PublicKeyToken=b88d1754d700e49a"
         Namespace="DevExpress.Web.ASPxPivotGrid"
         TagPrefix="dx" %>
@@ -17,13 +17,17 @@
     <form id="form1" runat="server">
     <div>
         <dx:ASPxPivotGrid ID="ASPxPivotGrid1" runat="server" 
-            DataSourceID="AccessDataSource1">
+            DataSourceID="SqlDataSource1" OptionsData-DataProcessingEngine="Optimized" ClientIDMode="AutoID" IsMaterialDesign="False">
             <Fields>
-                <dx:PivotGridField ID="fieldCity" Area="ColumnArea" AreaIndex="2" 
-                    FieldName="City">
+                <dx:PivotGridField ID="fieldCity" Area="ColumnArea" AreaIndex="1">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="City" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
-                <dx:PivotGridField ID="fieldCountry" Area="ColumnArea" AreaIndex="0" 
-                    FieldName="Country" TotalsVisibility="CustomTotals">
+                <dx:PivotGridField ID="fieldCountry" Area="ColumnArea" AreaIndex="0" TotalsVisibility="CustomTotals">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="Country" />
+                    </DataBindingSerializable>
                     <CustomTotals>
                         <dx:PivotGridCustomTotal SummaryType="Average"
                                    CellFormat-FormatType="Numeric"
@@ -34,22 +38,33 @@
                     </CustomTotals>
                 </dx:PivotGridField>
                 <dx:PivotGridField ID="fieldUnitPrice" Area="DataArea"
-                    AreaIndex="0" FieldName="UnitPrice">
+                    AreaIndex="0">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="UnitPrice" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
                 <dx:PivotGridField ID="fieldQuantity" Area="DataArea"
-                    AreaIndex="1" FieldName="Quantity">
+                    AreaIndex="1">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="Quantity" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
                 <dx:PivotGridField ID="fieldProductName" Area="RowArea"
-                    AreaIndex="0" FieldName="ProductName">
+                    AreaIndex="0">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="ProductName" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
             </Fields>
+            <OptionsData DataProcessingEngine="Optimized" />
         </dx:ASPxPivotGrid>
-        <asp:AccessDataSource ID="AccessDataSource1" runat="server" 
-            DataFile="~/App_Data/nwind.mdb" 
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
             SelectCommand="SELECT [City], [Region], [Country],
                     [UnitPrice], [Quantity], [ProductName]
-                    FROM [Invoices]">
-        </asp:AccessDataSource>
+                    FROM [Invoices]"></asp:SqlDataSource>
+
     </div>
     </form>
 </body>
